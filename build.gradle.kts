@@ -39,11 +39,6 @@ subprojects {
 
     dependencies {
         implementation(kotlin("stdlib-jdk8"))
-        implementation("org.springframework.boot:spring-boot-starter-web")
-    }
-}
-
-project(":api") {
-    dependencies {
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
     }
 }
