@@ -5,12 +5,11 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
+    kotlin("plugin.jpa") version "1.6.10"
+    kotlin("kapt") version "1.6.10"
 }
 
 allprojects {
-    apply(plugin = "org.springframework.boot")
-    apply(plugin = "io.spring.dependency-management")
-
     repositories {
         mavenCentral()
     }
@@ -31,7 +30,20 @@ allprojects {
 }
 
 subprojects {
-    apply(plugin = "org.jetbrains.kotlin.jvm")
+    apply(plugin = "kotlin")
+    apply(plugin = "org.springframework.boot")
+    apply(plugin = "io.spring.dependency-management")
+    /*apply(plugin = "kotlin-jpa")
+    apply(plugin = "kotlin-kapt")
+    apply(plugin = "kotlin-allopen")
+    noArg {
+        annotation("javax.persistence.Entity")
+    }
+    allOpen {
+        annotation("javax.persistence.Entity")
+        annotation("javax.persistence.MappedSuperclass")
+        annotation("javax.persistence.Embeddable")
+    }*/
 
     repositories {
         mavenCentral()
@@ -39,5 +51,7 @@ subprojects {
 
     dependencies {
         implementation(kotlin("stdlib-jdk8"))
+        implementation(kotlin("reflect"))
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     }
 }
