@@ -6,6 +6,10 @@ plugins {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-batch")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    runtimeOnly("com.h2database:h2")
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
+    }
     testImplementation("org.springframework.batch:spring-batch-test")
 }
