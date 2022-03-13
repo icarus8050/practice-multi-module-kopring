@@ -2,4 +2,4 @@
 /.gradle/
 /api/out/
 /api/out/production/classes/
-.idea
+/.idea/
