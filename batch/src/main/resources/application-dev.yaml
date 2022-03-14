@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    batch-meta:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/batch_meta?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: 1234
+
+  batch:
+    jdbc:
+      initialize-schema: NEVER
