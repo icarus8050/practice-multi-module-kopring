@@ -7,5 +7,7 @@ spring:
       password: 1234
 
   batch:
+    job:
+      enabled: false
     jdbc:
-      initialize-schema: NEVER
+      initialize-schema: ALWAYS
