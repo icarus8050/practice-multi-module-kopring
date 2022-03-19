@@ -26,6 +26,16 @@ class JobInstanceConfiguration(
     fun step1(): Step {
         return stepBuilderFactory["step1"]
             .tasklet { contribution, chunkContext ->
+                val jobParameters = contribution.stepExecution.jobParameters
+                println(
+                    """
+                        ${jobParameters.getString("name")}
+                        ${jobParameters.getLong("seq")}
+                        ${jobParameters.getDate("date")}
+                        ${jobParameters.getDouble("age")}
+                    """.trimIndent()
+                )
+
                 return@tasklet RepeatStatus.FINISHED
             }.build()
     }
