@@ -1,2 +1,2 @@
 rootProject.name = "multi-module-kopring"
-include("api", "batch")
+include("api", "batch", "order", "infrastructure")
