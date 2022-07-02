@@ -33,17 +33,6 @@ subprojects {
     apply(plugin = "kotlin")
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
-    /*apply(plugin = "kotlin-jpa")
-    apply(plugin = "kotlin-kapt")
-    apply(plugin = "kotlin-allopen")
-    noArg {
-        annotation("javax.persistence.Entity")
-    }
-    allOpen {
-        annotation("javax.persistence.Entity")
-        annotation("javax.persistence.MappedSuperclass")
-        annotation("javax.persistence.Embeddable")
-    }*/
 
     repositories {
         mavenCentral()
