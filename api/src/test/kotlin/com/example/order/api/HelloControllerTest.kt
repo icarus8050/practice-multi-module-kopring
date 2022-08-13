@@ -42,7 +42,7 @@ internal class HelloControllerTest {
 
     @Test
     fun helloTest() {
-        every { getHello.invoke() } returns "Hello World!!!"
+        every { getHello.invoke(any()) } returns "Hello World~!"
 
         RestAssuredMockMvc.given()
             .get("/hello")
