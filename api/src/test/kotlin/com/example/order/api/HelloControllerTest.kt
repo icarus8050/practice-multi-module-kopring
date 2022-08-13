@@ -1,6 +1,8 @@
 package com.example.order.api
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import io.mockk.every
+import io.mockk.mockk
 import io.restassured.config.ObjectMapperConfig
 import io.restassured.module.mockmvc.RestAssuredMockMvc
 import io.restassured.module.mockmvc.config.RestAssuredMockMvcConfig
@@ -14,13 +16,17 @@ import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder
 import org.springframework.web.filter.CharacterEncodingFilter
 
 internal class HelloControllerTest {
+    private var getHello: GetHello = mockk()
+    private var helloController: HelloController = HelloController(
+        getHello = getHello
+    )
 
     @BeforeEach
     fun init() {
         val objectMapper = Jackson2ObjectMapperBuilder.json().build<ObjectMapper>()
 
         RestAssuredMockMvc.standaloneSetup(
-            MockMvcBuilders.standaloneSetup(HelloController())
+            MockMvcBuilders.standaloneSetup(helloController)
                 .addFilter<StandaloneMockMvcBuilder?>(CharacterEncodingFilter("UTF-8", true))
                 .setMessageConverters(
                     StringHttpMessageConverter(),
@@ -36,9 +42,14 @@ internal class HelloControllerTest {
 
     @Test
     fun helloTest() {
+        every { getHello.invoke() } returns "Hello World!!!"
+
         RestAssuredMockMvc.given()
             .get("/hello")
             .then()
             .statusCode(200)
+            .extract()
+            .body()
+            .asString()
     }
 }

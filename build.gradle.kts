@@ -17,13 +17,13 @@ allprojects {
     version = "1.0-SNAPSHOT"
 
     tasks.withType<JavaCompile> {
-        sourceCompatibility = "1.8"
-        targetCompatibility = "1.8"
+        sourceCompatibility = "11"
+        targetCompatibility = "11"
     }
 
     tasks.withType<KotlinCompile> {
         kotlinOptions {
-            jvmTarget = "1.8"
+            jvmTarget = "11"
         }
     }
 }
@@ -49,5 +49,7 @@ subprojects {
         testImplementation("org.springframework.boot:spring-boot-starter-test") {
             exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
         }
+
+        testImplementation("io.mockk:mockk:1.12.5")
     }
 }
